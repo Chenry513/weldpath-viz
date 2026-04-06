@@ -597,10 +597,12 @@ function draw(){
   }
 
   if(showAxes){
-    const b=bounds, o=project(b.cx,b.cy,b.cz), aL=0.4;
-    [{p:project(b.cx+b.scale*aL,b.cy,b.cz),col:'#e05050',l:'X'},
-     {p:project(b.cx,b.cy+b.scale*aL,b.cz),col:'#50c070',l:'Y'},
-     {p:project(b.cx,b.cy,b.cz+b.scale*aL),col:'#5090e0',l:'Z'}].forEach(a=>{
+    const b=bounds;
+    const ox=b.mnx, oy=b.mny, oz=b.mnz;
+    const o=project(ox,oy,oz), aL=b.scale*0.35;
+    [{p:project(ox+aL,oy,oz),col:'#e05050',l:'X'},
+      {p:project(ox,oy+aL,oz),col:'#50c070',l:'Y'},
+      {p:project(ox,oy,oz+aL),col:'#5090e0',l:'Z'}].forEach(a=>{
       ctx.beginPath();ctx.moveTo(o.sx,o.sy);ctx.lineTo(a.p.sx,a.p.sy);
       ctx.strokeStyle=a.col;ctx.lineWidth=1.5*devicePixelRatio;ctx.stroke();
       ctx.fillStyle=a.col;
