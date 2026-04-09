@@ -1,5 +1,4 @@
 # Minimal Multi-View 3D Reconstruction for Robotic Welding
-
 **BCIT — Applied Research Project**  
 **In collaboration with Seaspan Shipyards**
 
@@ -49,15 +48,7 @@ git clone https://github.com/chenry513/vggt.git
 cd vggt
 ```
 
-### 2. Install VGGT
-
-VGGT is not a pip package — it needs to be installed from source inside this folder.
-
-```bash
-pip install -e .
-```
-
-### 3. Install dependencies
+### 2. Install dependencies
 
 ```bash
 pip install torch numpy matplotlib scikit-learn scipy opencv-contrib-python Pillow huggingface_hub safetensors einops
@@ -81,6 +72,15 @@ HOLE_SPACING = 0.05  # fixture hole spacing in meters — 5 cm by default
 ```
 
 ### Run
+
+On Windows, run this before running the script to avoid an OpenMP warning:
+
+```powershell
+$env:KMP_DUPLICATE_LIB_OK="TRUE"
+python weld_pipeline.py
+```
+
+On Mac/Linux:
 
 ```bash
 python weld_pipeline.py
@@ -144,7 +144,7 @@ Start and end points are currently selected by clicking in the viewer. A geometr
 ```
 vggt/
 ├── weld_pipeline.py        main reconstruction and calibration script
-├── index.html     3D viewer (also live at GitHub Pages)
+├── index.html              3D viewer (also live at GitHub Pages)
 ├── requirements.txt        Python dependencies
 ├── README.md
 └── vggt/                   VGGT model code (Meta Research)
